@@ -1,23 +1,33 @@
-NAME = libftprintf.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rc
-RM = rm -f
+NAME 	= libftprintf.a
+CC 		= cc
+CFLAGS 	= -Wall -Wextra -Werror
+AR 		= ar rc
+RM 		= rm -f
 
-FILES = ft_printf.c \
-		ft_printf_utils.c \
+FILES 	=	mandatory/ft_printf.c \
+			mandatory/ft_printf_utils.c
 
-OBJS = ft_printf.o \
-	ft_printf_utils.o \
+FILESB 	=	bonus/ft_printf_bonus.c \
+			bonus/ft_printf_utils_bonus.c\
+			bonus/ft_printf_utils_bonus1.c
 
+HEADERS	=	mandatory/ft_printf.h
+
+HEADERSB	=	bonus/ft_printf_bonus.h
+
+OBJS = ${FILES:.c=.o}
+OBJSB = ${FILESB:.c=.o}
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+$(NAME): $(OBJS) $(HEADERS)
+	$(AR) $@ $<
 	
-%.o: %.c ft_printf.h
+%.o: %.c $(HEADERS) $(HEADERSB)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(OBJSB) fclean
+	$(AR) $@ $<
 
 clean:
 	$(RM) $(OBJS)
