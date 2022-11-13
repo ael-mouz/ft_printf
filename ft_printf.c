@@ -6,7 +6,7 @@
 /*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:28:10 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/13 08:21:12 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/13 09:37:10 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ static	int	ft_check(char str, va_list p)
 	}
 	else if (str == '%')
 		count += ft_putchar('%');
-	else
-		count += ft_putchar(str);
 	return (count);
 }
 
