@@ -6,11 +6,12 @@
 /*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:28:10 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/11 01:44:08 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:37:41 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static	int	ft_check(char str, va_list p)
 {

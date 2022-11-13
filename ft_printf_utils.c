@@ -6,13 +6,13 @@
 /*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:38:19 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/11 01:05:58 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:37:53 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char p)
+int	ft_putchar(int p)
 {
 	write(1, &p, 1);
 	return (1);
