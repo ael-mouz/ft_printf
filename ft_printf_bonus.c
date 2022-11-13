@@ -6,17 +6,15 @@
 /*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:25:51 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/13 06:33:50 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/13 09:11:41 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-#include <stdio.h>
 
 static	int	ft_check(char str, va_list p)
 {
 	int		count;
-	va_list	s;
 
 	count = 0;
 	if (str == 'c')
@@ -41,21 +39,20 @@ static	int	ft_check(char str, va_list p)
 	return (count);
 }
 
-static	int	check_flag(const char *str, va_list k, va_list s)
+static	int	check_flag(const char *str, va_list k)
 {
 	int	i;
 
 	i = 0;
-	i += check_d(&str[i], k);
-	i += check_p_s(&str[i], ' ', k, s);
-	i += check_p_s(&str[i], '+', k, s);
+	i += check_d(&str[i]);
+	i += check_p_s(&str[i], ' ', k);
+	i += check_p_s(&str[i], '+', k);
 	return (i);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	p;
-	va_list	s;
 	int		i;
 	int		l;
 
@@ -70,7 +67,7 @@ int	ft_printf(const char *str, ...)
 		{
 			if (str[i + 1] == '\0')
 				break ;
-			i += check_flag(&str[i +1], p, s);
+			i += check_flag(&str[i + 1], p);
 			l += ft_check(str[++i], p);
 		}
 		else
