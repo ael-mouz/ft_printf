@@ -12,7 +12,7 @@
 
 #include "ft_printf_bonus.h"
 
-int	skip_flag(const char *str, char v)
+/*int	skip_flag(const char *str, char v)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ int	skip_flag(const char *str, char v)
 	while (str[i] == v)
 		i++;
 	return (i);
-}
+}*/
 
 int	check_p_s(const char *str, char p, va_list k)
 {
