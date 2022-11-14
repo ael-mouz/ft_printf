@@ -3,56 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils_bonus1.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 23:30:15 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/14 12:45:08 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/14 19:49:22 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-/*int	skip_flag(const char *str, char v)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == v)
-		i++;
-	return (i);
-}*/
-
-int	check_p_s(const char *str, char p, va_list k)
+int	check_p_s(const char *str, char p, va_list k, int *l)
 {
 	int		i;
-	int		l;
 	va_list	s;
 
 	i = 0;
-	l = 0;
+	va_copy(s, k);
 	if (str[i] == p)
 	{
-		va_copy(s, k);
-		if ((str[i + 1] == 'd' || str[i + 1] == 'i')
-			&& va_arg(s, int) > 0)
-			l += ft_putchar(p);
+		while (str[i] == p)
+			i++;
+		if ((str[i] == 'd' || str[i] == 'i')
+			&& va_arg(s, int) >= 0)
+			(*l) += ft_putchar(p);
 	}
-	return (l);
+	return (i);
 }
 
-int	check_d(const char *str)
+int	check_d(const char *str, va_list k, int *l)
 {
 	int		i;
-	int		l;
+	va_list	s;
 
 	i = 0;
-	l = 0;
+	va_copy(s, k);
 	if (str[i] == '#')
 	{
-		if (str[i + 1] == 'x')
-			l += ft_putstr("0x");
-		else if (str[i + 1] == 'X')
-			l += ft_putstr("0X");
+		while (str[i] == '#')
+			i++;
+		if (va_arg(s, unsigned int) != 0)
+		{
+			if (str[i] == 'x')
+				(*l) += ft_putstr("0x");
+			else if (str[i] == 'X')
+				(*l) += ft_putstr("0X");
+		}
 	}
-	return (l);
+	return (i);
 }

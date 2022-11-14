@@ -6,7 +6,7 @@
 /*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:26:42 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/13 08:43:38 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:30:36 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ int		ft_putstr(char *p);
 int		ft_putnbr(long n);
 int		ft_puthx(unsigned int i, char v);
 int		ft_putadd(size_t i);
-int		skip_flag(const char *str, char v);
-int		check_p_s(const char *str, char p, va_list k);
-int		check_d(const char *str);
+int		check_p_s(const char *str, char p, va_list k, int *l);
+int		check_d(const char *str, va_list k, int *l);
 int		ft_printf(const char *str, ...);
 
 #endif
