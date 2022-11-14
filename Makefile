@@ -26,7 +26,7 @@ $(NAME): $(OBJS)
 %.o: %.c $(HEADERS) $(HEADERSB)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJSB)
+bonus: $(OBJS) $(OBJSB)
 	$(AR) $(NAME) $^
 
 clean:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:25:51 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/13 09:36:15 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/14 12:55:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,23 @@ static	int	ft_check(char str, va_list p)
 	}
 	else if (str == '%')
 		count += ft_putchar('%');
+	else
+		count += ft_putchar(str);
 	return (count);
 }
 
 static	int	check_flag(const char *str, va_list k)
 {
-	int	i;
+	int	l;
 
-	i = 0;
-	i += check_d(&str[i]);
-	i += check_p_s(&str[i], ' ', k);
-	i += check_p_s(&str[i], '+', k);
-	return (i);
+	l = 0;
+	if (str[0] == '#')
+		l += check_d(&str[0]);
+	else if (str[0] == ' ')
+		l += check_p_s(&str[0], ' ', k);
+	else if (str[0] == '+')
+		l += check_p_s(&str[0], '+', k);
+	return (l);
 }
 
 int	ft_printf(const char *str, ...)
@@ -56,16 +61,17 @@ int	ft_printf(const char *str, ...)
 
 	i = 0;
 	l = 0;
+	va_start(p, str);
 	if (write(1, 0, 0) == -1)
 		return (-1);
-	va_start(p, str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == '\0')
 				break ;
-			i += check_flag(&str[i + 1], p);
+			if (str[i + 1] == ' ' || str[i + 1] == '+' || str[i + 1] == '#' )
+				l += check_flag(&str[++i], p);
 			l += ft_check(str[++i], p);
 		}
 		else

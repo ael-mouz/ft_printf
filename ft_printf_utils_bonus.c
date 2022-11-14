@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:23:47 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/12 23:33:09 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/14 12:45:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_putnbr(long n)
 	else
 	{
 		count += ft_putnbr((n / 10));
-		count += ft_putnbr((n % 10));
+		count += ft_putchar((n % 10));
 	}
 	return (count);
 }
