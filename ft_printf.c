@@ -6,7 +6,7 @@
 /*   By: ael-mouz <ael-mouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:28:10 by ael-mouz          #+#    #+#             */
-/*   Updated: 2022/11/14 19:45:41 by ael-mouz         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:10:06 by ael-mouz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static	int	ft_check(char str, va_list p)
 
 	count = 0;
 	if (str == 'c')
-		count += ft_putchar(va_arg(p, int));
+		count += ft_putchar(va_arg(p, uintptr_t));
 	else if (str == 's')
 		count += ft_putstr(va_arg(p, char *));
 	else if (str == 'u')
