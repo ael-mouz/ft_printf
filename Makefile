@@ -5,33 +5,29 @@ AR 		 = ar rc
 RM 		 = rm -f
 
 FILES 	 =	./mandatory/ft_printf.c \
-			./mandatory/ft_printf_utils.c
+			./mandatory/ft_printf_utils.c \
 
 FILESB 	 =	./bonus/ft_printf_bonus.c \
 			./bonus/ft_printf_utils_bonus.c\
-			./bonus/ft_printf_utils_bonus1.c
 
-HEADERS	 =	./mandatory/ft_printf.h
+HEADERS	 =	./mandatory/ft_printf.h \
 
-HEADERSB =	./bonus/ft_printf_bonus.h
+HEADERSB =	./bonus/ft_printf_bonus.h \
 
 OBJS     = ${FILES:.c=.o}
 OBJSB    = ${FILESB:.c=.o}
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+$(NAME): $(OBJS) $(HEADERS) 
+	$(AR) $@ $(OBJS)
 	
-./mandatory/%.o: %.c $(HEADERS)
+%.o: %.c $(HEADERS) $(HEADERSB)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-./bonus/%.o: %.c $(HEADERSB)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-bonus: $(OBJSB)
+bonus: $(OBJSB) $(HEADERSB)
 	$(RM) $(NAME)
-	$(AR) $(NAME) $^
+	$(AR) $(NAME) $(OBJSB)
 
 clean:
 	$(RM) $(OBJS)
