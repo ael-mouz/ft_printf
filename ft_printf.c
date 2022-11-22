@@ -18,7 +18,7 @@ static	int	ft_check(char str, va_list p)
 
 	count = 0;
 	if (str == 'c')
-		count += ft_putchar(va_arg(p, uintptr_t));
+		count += ft_putchar(va_arg(p, int));
 	else if (str == 's')
 		count += ft_putstr(va_arg(p, char *));
 	else if (str == 'u')
